@@ -493,79 +493,62 @@ export default {
 
 <style scoped>
 .stat-change {
-  margin-top: 0.75rem;
-  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  font-size: 0.6875rem;
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  font-family: 'DM Mono', monospace;
 }
 
-.stat-change.positive {
-  color: #059669;
-}
+.stat-change.positive { color: var(--green); }
+.stat-change.negative { color: var(--red); }
+.change-icon { font-weight: 700; }
 
-.stat-change.negative {
-  color: #dc2626;
-}
-
-.change-icon {
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.chart-card {
-  margin-bottom: 1.75rem;
-}
+.chart-card { margin-bottom: 1rem; }
 
 .chart-legend {
   display: flex;
-  gap: 1.5rem;
-  font-size: 0.875rem;
+  gap: 1.25rem;
+  font-size: 0.6875rem;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  color: #64748b;
+  gap: 0.375rem;
+  color: var(--text-3);
+  font-family: 'Geist', sans-serif;
 }
 
-.legend-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 3px;
-}
-
-.legend-dot.procurement { background: #3b82f6; }
+.legend-dot { width: 8px; height: 8px; border-radius: 2px; }
+.legend-dot.procurement { background: var(--accent); }
 .legend-dot.operational { background: #8b5cf6; }
-.legend-dot.labor { background: #10b981; }
-.legend-dot.overhead { background: #f59e0b; }
-.legend-dot.revenue-color { background: #0f172a; }
-.legend-dot.cost-color { background: #ef4444; }
+.legend-dot.labor { background: var(--green); }
+.legend-dot.overhead { background: var(--yellow); }
+.legend-dot.revenue-color { background: var(--text); }
+.legend-dot.cost-color { background: var(--red); }
 
 .stats-grid-finance {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  margin-bottom: 1rem;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
-.revenue-card {
-  border-left: 4px solid #0f172a;
-}
-
-.cost-card {
-  border-left: 4px solid #ef4444;
-}
-
-.profit-card {
-  border-left: 4px solid #3b82f6;
-}
+.revenue-card .stat-card::before { background: var(--text); }
+.cost-card::before { background: var(--red) !important; }
+.profit-card::before { background: var(--accent) !important; }
 
 .stat-meta {
-  margin-top: 0.5rem;
-  font-size: 0.813rem;
-  color: #64748b;
+  margin-top: 0.375rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.625rem;
+  color: var(--text-3);
 }
 
 .bar-group-revenue {
@@ -578,55 +561,46 @@ export default {
 
 .revenue-bars {
   width: 100%;
-  max-width: 80px;
+  max-width: 70px;
   display: flex;
-  gap: 6px;
+  gap: 4px;
   justify-content: center;
   align-items: flex-end;
   height: 100%;
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
 }
 
 .revenue-bar, .cost-bar {
   width: 50%;
-  max-width: 30px;
-  border-radius: 6px 6px 0 0;
-  transition: all 0.3s ease;
+  max-width: 26px;
+  border-radius: 3px 3px 0 0;
+  transition: all 0.25s ease;
   cursor: pointer;
   min-height: 4px;
 }
 
-.revenue-bar {
-  background: #0f172a;
-}
+.revenue-bar { background: rgba(99,102,241,0.7); }
+.cost-bar { background: rgba(248,81,73,0.7); }
+.revenue-bar:hover { background: var(--accent); }
+.cost-bar:hover { background: var(--red); }
 
-.cost-bar {
-  background: #ef4444;
-}
-
-.revenue-bar:hover, .cost-bar:hover {
-  opacity: 0.8;
-  transform: scaleY(1.05);
-}
-
-.chart-container {
-  padding: 1.5rem 0;
-}
+.chart-container { padding: 1rem 0; }
 
 .bar-chart {
   display: flex;
   gap: 1.5rem;
-  height: 350px;
+  height: 300px;
 }
 
 .y-axis {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-right: 1rem;
-  font-size: 0.75rem;
-  color: #94a3b8;
-  border-right: 1px solid #e2e8f0;
+  padding-right: 0.75rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5625rem;
+  color: var(--text-3);
+  border-right: 1px solid var(--border);
 }
 
 .chart-area {
@@ -634,7 +608,7 @@ export default {
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  gap: 0.5rem;
+  gap: 0.375rem;
 }
 
 .bar-group {
@@ -647,206 +621,139 @@ export default {
 
 .stacked-bar {
   width: 100%;
-  max-width: 60px;
+  max-width: 50px;
   display: flex;
   flex-direction: column-reverse;
   align-items: stretch;
   height: 100%;
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.15s ease;
 }
 
-.stacked-bar:hover {
-  opacity: 0.85;
-}
+.stacked-bar:hover { opacity: 0.85; }
 
 .bar-segment {
   width: 100%;
-  transition: all 0.3s ease;
-  cursor: pointer;
+  transition: all 0.25s ease;
   display: block;
 }
 
-.bar-segment:first-child {
-  border-radius: 0 0 6px 6px;
-}
-
-.bar-segment:last-child {
-  border-radius: 6px 6px 0 0;
-}
-
-.bar-segment.procurement { background: #3b82f6; }
-.bar-segment.operational { background: #8b5cf6; }
-.bar-segment.labor { background: #10b981; }
-.bar-segment.overhead { background: #f59e0b; }
-
-.bar-segment:hover {
-  opacity: 0.8;
-}
+.bar-segment:first-child { border-radius: 0 0 2px 2px; }
+.bar-segment:last-child { border-radius: 2px 2px 0 0; }
+.bar-segment.procurement { background: rgba(99,102,241,0.8); }
+.bar-segment.operational { background: rgba(139,92,246,0.8); }
+.bar-segment.labor { background: rgba(63,185,80,0.8); }
+.bar-segment.overhead { background: rgba(210,153,34,0.8); }
+.bar-segment:hover { opacity: 0.9; }
 
 .bar-label {
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #64748b;
+  margin-top: 0.375rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5625rem;
+  color: var(--text-3);
 }
 
 .two-column-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1rem;
 }
 
 .category-list {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
 }
 
 .category-item {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.375rem;
 }
 
 .category-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
 }
 
 .category-name {
+  font-size: 0.8125rem;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--text);
+  font-family: 'Geist', sans-serif;
 }
 
 .category-amount {
-  font-weight: 700;
-  color: #2563eb;
-  font-size: 1.125rem;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  color: var(--accent);
+  font-size: 0.875rem;
 }
 
 .category-bar-container {
   width: 100%;
-  height: 8px;
-  background: #f1f5f9;
-  border-radius: 4px;
+  height: 3px;
+  background: var(--surface-2);
+  border-radius: 2px;
   overflow: hidden;
 }
 
 .category-bar {
   height: 100%;
-  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
-  border-radius: 4px;
+  background: var(--accent);
+  border-radius: 2px;
   transition: width 0.6s ease;
+  opacity: 0.6;
 }
 
 .category-meta {
   display: flex;
   justify-content: space-between;
-  font-size: 0.813rem;
+  font-size: 0.625rem;
+  font-family: 'DM Mono', monospace;
 }
 
-.percentage {
-  color: #64748b;
-}
+.percentage { color: var(--text-3); }
+.change { font-weight: 500; }
+.change.positive { color: var(--green); }
+.change.negative { color: var(--red); }
 
-.change {
-  font-weight: 600;
-}
+.transactions-card { display: flex; flex-direction: column; }
+.transactions-table-container { overflow-y: auto; max-height: 360px; }
 
-.change.positive {
-  color: #059669;
-}
-
-.change.negative {
-  color: #dc2626;
-}
-
-.transactions-card {
-  display: flex;
-  flex-direction: column;
-}
-
-.transactions-table-container {
-  overflow-y: auto;
-  max-height: 400px;
-}
-
-.transactions-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.transactions-table thead {
-  position: sticky;
-  top: 0;
-  background: #f8fafc;
-  z-index: 1;
-}
-
+.transactions-table { width: 100%; border-collapse: collapse; }
+.transactions-table thead { position: sticky; top: 0; background: var(--surface); z-index: 1; }
 .transactions-table th {
   text-align: left;
-  padding: 0.625rem 0.75rem;
+  padding: 0.5rem 0.875rem;
   font-weight: 600;
-  color: #475569;
-  font-size: 0.75rem;
+  color: var(--text-3);
+  font-size: 0.5625rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid #e2e8f0;
+  letter-spacing: 0.09em;
+  border-bottom: 1px solid var(--border-strong);
+  font-family: 'Geist', sans-serif;
 }
 
-.transactions-table th.text-right {
-  text-align: right;
-}
-
-.transactions-table td {
-  padding: 0.75rem 0.75rem;
-  border-bottom: 1px solid #f1f5f9;
-  font-size: 0.875rem;
-}
-
-.transactions-table tbody tr {
-  cursor: pointer;
-  transition: background-color 0.15s ease;
-}
-
-.transactions-table tbody tr:hover {
-  background: #f8fafc;
-}
-
-.transactions-table tbody tr.clickable-row:hover {
-  background: #eff6ff;
-}
+.transactions-table th.text-right { text-align: right; }
+.transactions-table td { padding: 0.5rem 0.875rem; border-bottom: 1px solid var(--border); font-size: 0.8125rem; }
+.transactions-table tbody tr { cursor: pointer; transition: background 0.1s ease; }
+.transactions-table tbody tr:hover { background: var(--surface-2); }
+.transactions-table tbody tr:last-child td { border-bottom: none; }
 
 .transaction-id {
-  color: #64748b;
+  color: var(--text-3);
   font-weight: 500;
-  font-family: 'Monaco', 'Courier New', monospace;
-  font-size: 0.813rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6875rem;
 }
 
-.transaction-description {
-  color: #0f172a;
-  font-weight: 500;
-}
-
-.transaction-vendor {
-  color: #64748b;
-}
-
-.transaction-date {
-  color: #64748b;
-  font-size: 0.813rem;
-}
-
-.transaction-amount {
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.text-right {
-  text-align: right;
-}
+.transaction-description { color: var(--text); font-weight: 500; font-family: 'Geist', sans-serif; }
+.transaction-vendor { color: var(--text-3); font-family: 'Geist', sans-serif; }
+.transaction-date { color: var(--text-3); font-family: 'DM Mono', monospace; font-size: 0.6875rem; }
+.transaction-amount { font-family: 'DM Mono', monospace; font-weight: 500; color: var(--text); }
+.text-right { text-align: right; }
 </style>

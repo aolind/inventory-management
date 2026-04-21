@@ -226,144 +226,133 @@ export default {
 <style scoped>
 .demand-trend-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  margin-bottom: 1rem;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .trend-card {
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 1.5rem;
-  transition: all 0.2s ease;
+  background: var(--surface);
+  padding: 1rem 1.25rem;
+  transition: background 0.12s ease;
+  position: relative;
 }
 
-.trend-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.trend-card:hover { background: var(--surface-2); }
+
+.increasing-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--green);
 }
 
-.increasing-card {
-  border-left: 4px solid #10b981;
+.stable-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--blue);
 }
 
-.stable-card {
-  border-left: 4px solid #3b82f6;
-}
-
-.decreasing-card {
-  border-left: 4px solid #ef4444;
+.decreasing-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--red);
 }
 
 .trend-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #f1f5f9;
+  gap: 0.75rem;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .trend-icon {
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  font-size: 1.75rem;
+  border-radius: 6px;
+  font-size: 1.25rem;
   font-weight: 700;
   flex-shrink: 0;
+  font-family: 'DM Mono', monospace;
 }
 
-.increasing-card .trend-icon {
-  background: #d1fae5;
-  color: #059669;
-}
-
-.stable-card .trend-icon {
-  background: #dbeafe;
-  color: #2563eb;
-}
-
-.decreasing-card .trend-icon {
-  background: #fee2e2;
-  color: #dc2626;
-}
+.increasing-card .trend-icon { background: rgba(63,185,80,0.1); color: var(--green); }
+.stable-card .trend-icon { background: rgba(88,166,255,0.1); color: var(--blue); }
+.decreasing-card .trend-icon { background: rgba(248,81,73,0.1); color: var(--red); }
 
 .trend-label {
-  font-size: 0.875rem;
+  font-size: 0.5625rem;
   font-weight: 600;
-  color: #64748b;
+  color: var(--text-3);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.09em;
+  font-family: 'Geist', sans-serif;
 }
 
 .trend-count {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-top: 0.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-top: 0.125rem;
 }
 
-.trend-items {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
+.trend-items { display: flex; flex-direction: column; gap: 0.375rem; }
 
 .trend-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0.75rem;
-  background: #f8fafc;
-  border-radius: 6px;
-  transition: background 0.2s;
+  padding: 0.375rem 0.5rem;
+  border-radius: 3px;
+  transition: background 0.1s;
 }
 
-.trend-item:hover {
-  background: #f1f5f9;
-}
+.trend-item:hover { background: var(--surface-2); }
 
 .item-name {
-  font-size: 0.875rem;
-  color: #0f172a;
+  font-size: 0.75rem;
+  color: var(--text-2);
   font-weight: 500;
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-right: 1rem;
+  margin-right: 0.75rem;
+  font-family: 'Geist', sans-serif;
 }
 
 .item-change {
-  font-size: 0.813rem;
-  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
   flex-shrink: 0;
 }
 
-.increasing-card .item-change {
-  color: #059669;
-}
-
-.stable-card .item-change {
-  color: #3b82f6;
-}
-
-.decreasing-card .item-change {
-  color: #dc2626;
-}
-
-.item-change.neutral {
-  color: #64748b;
-}
+.increasing-card .item-change { color: var(--green); }
+.stable-card .item-change { color: var(--blue); }
+.decreasing-card .item-change { color: var(--red); }
+.item-change.neutral { color: var(--text-3); }
 
 .more-items {
-  font-size: 0.813rem;
-  color: #64748b;
-  font-style: italic;
+  font-size: 0.625rem;
+  color: var(--text-3);
   text-align: center;
-  padding: 0.5rem;
+  padding: 0.375rem;
+  font-family: 'DM Mono', monospace;
 }
 </style>
