@@ -89,58 +89,45 @@ const selectLanguage = (locale) => {
 </script>
 
 <style scoped>
-.language-switcher {
-  position: relative;
-}
+.language-switcher { position: relative; }
 
 .language-button {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.875rem;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  gap: 7px;
+  padding: 5px 8px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: inherit;
-  font-size: 0.875rem;
-  color: #334155;
+  transition: all 0.12s ease;
+  font-family: 'Geist', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  width: 100%;
+  justify-content: flex-start;
 }
 
 .language-button:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
 }
 
-.globe-icon {
-  color: #64748b;
-  flex-shrink: 0;
-}
-
-.language-label {
-  font-weight: 500;
-}
-
-.chevron {
-  color: #64748b;
-  transition: transform 0.2s ease;
-  flex-shrink: 0;
-}
-
-.chevron-open {
-  transform: rotate(180deg);
-}
+.globe-icon { color: rgba(255,255,255,0.25); flex-shrink: 0; }
+.language-label { font-weight: 500; flex: 1; }
+.chevron { color: rgba(255,255,255,0.2); transition: transform 0.15s ease; flex-shrink: 0; }
+.chevron-open { transform: rotate(180deg); }
 
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 0.5rem);
-  right: 0;
-  min-width: 160px;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  bottom: calc(100% + 6px);
+  left: 0;
+  width: 160px;
+  background: #1c2128;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
   z-index: 1000;
   overflow: hidden;
 }
@@ -150,34 +137,26 @@ const selectLanguage = (locale) => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  gap: 0.625rem;
+  padding: 0.5rem 0.875rem;
   background: none;
   border: none;
   text-align: left;
   cursor: pointer;
-  transition: background 0.15s ease;
-  font-family: inherit;
-  font-size: 0.875rem;
+  transition: background 0.1s ease;
+  font-family: 'Geist', sans-serif;
+  font-size: 0.8125rem;
   font-weight: 500;
-  color: #334155;
+  color: #8b949e;
 }
 
-.dropdown-item:hover {
-  background: #f8fafc;
-}
+.dropdown-item:hover { background: rgba(255,255,255,0.04); color: #e6edf3; }
 
 .dropdown-item.active {
-  background: #eff6ff;
-  color: #2563eb;
+  background: rgba(99,102,241,0.12);
+  color: #6366f1;
 }
 
-.language-name {
-  flex: 1;
-}
-
-.check-icon {
-  color: #2563eb;
-  flex-shrink: 0;
-}
+.language-name { flex: 1; }
+.check-icon { color: #6366f1; flex-shrink: 0; }
 </style>

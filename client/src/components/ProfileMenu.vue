@@ -116,108 +116,110 @@ const handleLogout = () => {
 </script>
 
 <style scoped>
-.profile-menu {
-  position: relative;
-}
+.profile-menu { position: relative; }
 
 .profile-button {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
-  padding: 0.5rem 0.875rem;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  gap: 8px;
+  padding: 6px 8px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 5px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: inherit;
+  transition: all 0.12s ease;
+  font-family: 'Geist', sans-serif;
+  width: 100%;
+  justify-content: flex-start;
 }
 
 .profile-button:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.12);
 }
 
 .avatar {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   letter-spacing: 0.025em;
+  flex-shrink: 0;
 }
 
 .profile-name {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  color: #0f172a;
+  color: rgba(255,255,255,0.6);
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .chevron {
-  color: #64748b;
-  transition: transform 0.2s ease;
+  color: rgba(255,255,255,0.25);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
 }
 
-.chevron-open {
-  transform: rotate(180deg);
-}
+.chevron-open { transform: rotate(180deg); }
 
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 0.5rem);
-  right: 0;
-  min-width: 280px;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  bottom: calc(100% + 6px);
+  left: 0;
+  width: 220px;
+  background: #1c2128;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
   z-index: 1000;
   overflow: hidden;
 }
 
 .dropdown-header {
-  padding: 1rem;
+  padding: 0.875rem;
   display: flex;
-  gap: 0.875rem;
+  gap: 0.75rem;
   align-items: center;
-  background: #f8fafc;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .avatar-large {
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.025em;
+  font-size: 0.75rem;
   flex-shrink: 0;
 }
 
-.user-info {
-  flex: 1;
-  min-width: 0;
-}
+.user-info { flex: 1; min-width: 0; }
 
 .user-name {
   font-weight: 600;
-  color: #0f172a;
-  font-size: 0.938rem;
-  margin-bottom: 0.25rem;
+  color: #e6edf3;
+  font-size: 0.8125rem;
+  margin-bottom: 0.125rem;
+  font-family: 'Geist', sans-serif;
 }
 
 .user-email {
-  font-size: 0.813rem;
-  color: #64748b;
+  font-size: 0.6875rem;
+  color: #8b949e;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -225,57 +227,45 @@ const handleLogout = () => {
 
 .dropdown-divider {
   height: 1px;
-  background: #e2e8f0;
-  margin: 0.5rem 0;
+  background: rgba(255,255,255,0.06);
+  margin: 0.25rem 0;
 }
 
 .dropdown-item {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
+  gap: 0.625rem;
+  padding: 0.5625rem 0.875rem;
   background: none;
   border: none;
   text-align: left;
   cursor: pointer;
-  transition: background 0.15s ease;
-  font-family: inherit;
-  font-size: 0.875rem;
+  transition: background 0.1s ease;
+  font-family: 'Geist', sans-serif;
+  font-size: 0.8125rem;
   font-weight: 500;
-  color: #334155;
+  color: #8b949e;
 }
 
-.dropdown-item:hover {
-  background: #f8fafc;
-}
+.dropdown-item:hover { background: rgba(255,255,255,0.04); color: #e6edf3; }
+.dropdown-item svg { color: #484f58; flex-shrink: 0; }
+.dropdown-item:hover svg { color: #8b949e; }
 
-.dropdown-item svg {
-  color: #64748b;
-  flex-shrink: 0;
-}
-
-.dropdown-item.logout {
-  color: #dc2626;
-}
-
-.dropdown-item.logout svg {
-  color: #dc2626;
-}
-
-.dropdown-item.logout:hover {
-  background: #fef2f2;
-}
+.dropdown-item.logout { color: #f85149; }
+.dropdown-item.logout svg { color: #f85149; }
+.dropdown-item.logout:hover { background: rgba(248,81,73,0.08); }
 
 .task-badge {
   margin-left: auto;
-  background: #2563eb;
+  background: #6366f1;
   color: white;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 600;
-  padding: 0.125rem 0.5rem;
-  border-radius: 12px;
-  min-width: 20px;
+  padding: 0.125rem 0.4375rem;
+  border-radius: 3px;
+  min-width: 18px;
   text-align: center;
+  font-family: 'DM Mono', monospace;
 }
 </style>

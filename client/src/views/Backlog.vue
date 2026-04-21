@@ -150,3 +150,8 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.clickable-row { cursor: pointer; }
+.clickable-row:hover { background: var(--surface-2) !important; }
+</style>

@@ -101,94 +101,100 @@ export default {
 </script>
 
 <style scoped>
-.filters-bar {
-  background: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 0.75rem 0;
-  position: sticky;
-  top: 70px;
-  z-index: 90;
-}
+.filters-bar { /* inherits sidebar context */ }
 
 .filters-container {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 2rem;
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 2px;
 }
 
 .filters-grid {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex: 1;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .filter-group {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .filter-group label {
-  font-size: 0.75rem;
+  font-family: 'Geist', sans-serif;
+  font-size: 0.5625rem;
   font-weight: 600;
-  color: #64748b;
-  white-space: nowrap;
+  color: rgba(255,255,255,0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  padding-left: 2px;
 }
 
 .filter-select {
-  padding: 0.4rem 0.75rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  font-size: 0.813rem;
-  color: #0f172a;
-  background: white;
+  width: 100%;
+  padding: 5px 24px 5px 8px;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  font-size: 0.6875rem;
+  color: rgba(255,255,255,0.55);
+  background-color: rgba(255,255,255,0.03);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M2.5 4l2.5 2.5 2.5-2.5' stroke='%23484f58' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.12s ease;
+  font-family: 'Geist', sans-serif;
   font-weight: 500;
-  min-width: 140px;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .filter-select:hover {
-  border-color: #94a3b8;
+  border-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.75);
 }
 
 .filter-select:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.15);
+  color: rgba(255,255,255,0.9);
+}
+
+.filter-select option {
+  background: #161b22;
+  color: #e6edf3;
 }
 
 .reset-filters-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.4rem;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  color: #64748b;
+  gap: 5px;
+  width: 100%;
+  padding: 5px 8px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  color: rgba(255,255,255,0.2);
   cursor: pointer;
-  transition: all 0.2s;
-  flex-shrink: 0;
+  transition: all 0.12s ease;
+  font-size: 0.5625rem;
+  font-weight: 600;
+  font-family: 'Geist', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-top: 6px;
 }
 
 .reset-filters-btn:hover:not(:disabled) {
-  background: #f8fafc;
-  border-color: #cbd5e1;
-  color: #0f172a;
+  border-color: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.5);
 }
 
-.reset-filters-btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
+.reset-filters-btn:disabled { opacity: 0.2; cursor: not-allowed; }
 
-.reset-filters-btn svg {
-  width: 18px;
-  height: 18px;
-}
+.reset-filters-btn svg { width: 11px; height: 11px; }
 </style>
